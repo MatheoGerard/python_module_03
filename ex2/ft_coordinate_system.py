@@ -1,5 +1,4 @@
 import math
-import re
 
 
 def distance_function(
@@ -45,7 +44,7 @@ def get_player_pos() -> tuple[float, float, float]:
     return position
 
 
-def main():
+def main() -> None:
     print("=== Game Coordinate System ===")
     print("Get a first set of coordinates")
     first_position: tuple[float, float, float] = get_player_pos()
