@@ -27,7 +27,7 @@ def fill_tuples(usr_input: list[str], player_pos: list[float]) -> bool:
     except ValueError:
         player_pos.clear()
         print(
-            f"Error on parameter '{usr_input[i]}': could not convert string to float: '{usr_input[i]}'"
+            f"\033[31mError on parameter '{usr_input[i]}': could not convert string to float: '{usr_input[i]}'\033[0m"
         )
         return False
 
@@ -59,7 +59,7 @@ def main():
     print("Get a second set of coordinates")
     second_position: tuple[float, float, float] = get_player_pos()
     print(
-        f"Distance between the 2 sets of coordinates: {distance_function(first_position, second_position)})"
+        f"Distance between the 2 sets of coordinates: {distance_function(first_position, second_position)}"
     )
 
 
