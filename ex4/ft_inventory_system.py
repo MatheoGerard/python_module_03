@@ -63,9 +63,10 @@ if __name__ == "__main__":
         print(
             f"Item {item} represents {calcul_pourcentage(inventory[item], sum(items_count))}%"
         )
-    max_set: tuple[str, int] = find_max(inventory, items_list)
-    print(f"Item most abundant: {max_set[0]} with quantity {max_set[1]}")
-    min_set: tuple[str, int] = find_min(inventory, items_list)
-    print(f"Item least abundant: {min_set[0]} with quantity {min_set[1]}")
+    if len(sys.argv) > 1:
+        max_set: tuple[str, int] = find_max(inventory, items_list)
+        print(f"Item most abundant: {max_set[0]} with quantity {max_set[1]}")
+        min_set: tuple[str, int] = find_min(inventory, items_list)
+        print(f"Item least abundant: {min_set[0]} with quantity {min_set[1]}")
     inventory.update({"magic_item": 1})
     print(f"Updated inventory: {inventory}")
