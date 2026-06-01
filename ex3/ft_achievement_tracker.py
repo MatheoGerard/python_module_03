@@ -49,9 +49,7 @@ def gen_player_achievements() -> set[str]:
     nb_achivements = random.randrange(0, len(achivement_list))
     i: int = 0
     while i < nb_achivements:
-        achivement.add(
-            achivement_list[random.randrange(0, len(achivement_list))]
-        )
+        achivement.add(achivement_list[random.randrange(0, len(achivement_list))])
         i += 1
     return achivement
 
@@ -80,9 +78,7 @@ def main_player():
             name_index: int = random.randrange(0, len(player_name_list))
         name_take.append(name_index)
         player_name: str = player_name_list[name_index]
-        players.append(
-            Player.generate_player(player_name, gen_player_achievements())
-        )
+        players.append(Player.generate_player(player_name, gen_player_achievements()))
         i += 1
     for player in players:
         player.show()
@@ -96,8 +92,9 @@ def main_player():
     print()
     i = 0
     while i < len(players):
-        unique: set[str] = set.difference(*sets_players)
-        print(f"Only {player.get_name()} has: {unique}")
+        set_without_actual: list[set[str]] = sets_players[:i] + sets_players[i + 1 :]
+        unique: set[str] = sets_players[i].difference(*set_without_actual)
+        print(f"Only {players[i].get_name()} has: {unique}")
         i += 1
 
 
