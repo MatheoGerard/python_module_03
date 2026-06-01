@@ -29,7 +29,7 @@ class Player:
         return cls(name, achivements)
 
 
-def gen_player_achievements() -> set[str]:
+def achivements_list_gen() -> list[str]:
     achivement_list: list[str] = [
         "Crafting Genius",
         "Strategist",
@@ -45,16 +45,24 @@ def gen_player_achievements() -> set[str]:
         "Sharp Mind",
         "Boss Slayer",
     ]
+    return achivement_list
+
+
+def gen_player_achievements() -> set[str]:
+    achivement_list: list[str] = achivements_list_gen()
     achivement: set[str] = set()
     nb_achivements = random.randrange(0, len(achivement_list))
     i: int = 0
     while i < nb_achivements:
-        achivement.add(achivement_list[random.randrange(0, len(achivement_list))])
+        achivement.add(
+            achivement_list[random.randrange(0, len(achivement_list))]
+        )
         i += 1
     return achivement
 
 
 def main_player():
+    achivement_list: list[str] = achivements_list_gen()
     player_name_list: list[str] = [
         "Alice",
         "Martin",
@@ -78,7 +86,9 @@ def main_player():
             name_index: int = random.randrange(0, len(player_name_list))
         name_take.append(name_index)
         player_name: str = player_name_list[name_index]
-        players.append(Player.generate_player(player_name, gen_player_achievements()))
+        players.append(
+            Player.generate_player(player_name, gen_player_achievements())
+        )
         i += 1
     for player in players:
         player.show()
@@ -92,11 +102,21 @@ def main_player():
     print()
     i = 0
     while i < len(players):
-        set_without_actual: list[set[str]] = sets_players[:i] + sets_players[i + 1 :]
+        set_without_actual: list[set[str]] = (
+            sets_players[:i] + sets_players[i + 1 :]
+        )
         unique: set[str] = sets_players[i].difference(*set_without_actual)
         print(f"Only {players[i].get_name()} has: {unique}")
         i += 1
+    print()
+    for player in players:
+        print(
+            f"{player.get_name()} is missing: "
+            f"{player.get_achivements().intersection(achivement_list)}"
+        )
 
 
 if __name__ == "__main__":
+    print("=== Achievement Tracker System ===")
+    print()
     main_player()

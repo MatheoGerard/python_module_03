@@ -26,7 +26,8 @@ def fill_tuples(usr_input: list[str], player_pos: list[float]) -> bool:
     except ValueError:
         player_pos.clear()
         print(
-            f"\033[31mError on parameter '{usr_input[i]}': could not convert string to float: '{usr_input[i]}'\033[0m"
+            f"\033[31mError on parameter '{usr_input[i]}': "
+            f"could not convert string to float: '{usr_input[i]}'\033[0m"
         )
         return False
 
@@ -40,7 +41,11 @@ def get_player_pos() -> tuple[float, float, float]:
             "Enter new coordinates as floats in format 'x,y,z': "
         ).split(",")
         is_good_pos = fill_tuples(user_input, player_pos)
-    position: tuple[float, float, float] = (player_pos[0], player_pos[1], player_pos[2])
+    position: tuple[float, float, float] = (
+        player_pos[0],
+        player_pos[1],
+        player_pos[2],
+    )
     return position
 
 
@@ -50,7 +55,8 @@ def main() -> None:
     first_position: tuple[float, float, float] = get_player_pos()
     print(f"Got a first tuple: {first_position}")
     print(
-        f"It includes: X={first_position[0]}, Y={first_position[1]}, Z={first_position[2]}"
+        f"It includes: X={first_position[0]}, Y={first_position[1]}, "
+        f"Z={first_position[2]}"
     )
     center: tuple[float, float, float] = (0.0, 0.0, 0.0)
     print(f"Distance to center: {distance_function(center, first_position)}")
@@ -58,7 +64,8 @@ def main() -> None:
     print("Get a second set of coordinates")
     second_position: tuple[float, float, float] = get_player_pos()
     print(
-        f"Distance between the 2 sets of coordinates: {distance_function(first_position, second_position)}"
+        "Distance between the 2 sets of coordinates: "
+        f"{distance_function(first_position, second_position)}"
     )
 
 
