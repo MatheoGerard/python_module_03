@@ -21,7 +21,7 @@ class Player:
     def get_achivements_nb(self) -> int:
         return len(self._achivements)
 
-    def show(self):
+    def show(self) -> None:
         print(f"Player {self.get_name()}: {self.get_achivements()}")
 
     @classmethod
@@ -61,7 +61,7 @@ def gen_player_achievements() -> set[str]:
     return achivement
 
 
-def main_player():
+def main_player() -> None:
     achivement_list: list[str] = achivements_list_gen()
     player_name_list: list[str] = [
         "Alice",
@@ -83,7 +83,7 @@ def main_player():
     while i < nb_players:
         name_index: int = random.randrange(0, len(player_name_list))
         while name_index in name_take:
-            name_index: int = random.randrange(0, len(player_name_list))
+            name_index = random.randrange(0, len(player_name_list))
         name_take.append(name_index)
         player_name: str = player_name_list[name_index]
         players.append(
@@ -103,7 +103,7 @@ def main_player():
     i = 0
     while i < len(players):
         set_without_actual: list[set[str]] = (
-            sets_players[:i] + sets_players[i + 1 :]
+            sets_players[:i] + sets_players[i + 1:]
         )
         unique: set[str] = sets_players[i].difference(*set_without_actual)
         print(f"Only {players[i].get_name()} has: {unique}")

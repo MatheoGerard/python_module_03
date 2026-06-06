@@ -1,7 +1,7 @@
 import sys
 
 
-def count_argv(args_lst: list[str]):
+def count_argv(args_lst: list[str]) -> None:
     if len(args_lst) < 2:
         print("No arguments provided!")
     else:

@@ -30,7 +30,9 @@ def calcul_pourcentage(item_nb: int, items_count: int) -> float:
     return round(pourcentage, 1)
 
 
-def find_max(inventory: dict[str, int], items_list: list[str]) -> tuple[str, int]:
+def find_max(
+    inventory: dict[str, int], items_list: list[str]
+) -> tuple[str, int]:
     high: int = inventory[items_list[0]]
     name_high: str = items_list[0]
     for item in items_list[1:]:
@@ -41,7 +43,9 @@ def find_max(inventory: dict[str, int], items_list: list[str]) -> tuple[str, int
     return return_set
 
 
-def find_min(inventory: dict[str, int], items_list: list[str]) -> tuple[str, int]:
+def find_min(
+    inventory: dict[str, int], items_list: list[str]
+) -> tuple[str, int]:
     low: int = inventory[items_list[0]]
     name_low: str = items_list[0]
     for item in items_list[1:]:
@@ -61,7 +65,8 @@ if __name__ == "__main__":
     print(f"Total quantity of the {len(items_list)} items: {sum(items_count)}")
     for item in inventory.keys():
         print(
-            f"Item {item} represents {calcul_pourcentage(inventory[item], sum(items_count))}%"
+            f"Item {item} represents "
+            f"{calcul_pourcentage(inventory[item], sum(items_count))}%"
         )
     if len(sys.argv) > 1:
         max_set: tuple[str, int] = find_max(inventory, items_list)
